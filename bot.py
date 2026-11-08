@@ -2,7 +2,7 @@ import asyncio
 from playwright.async_api import async_playwright, TimeoutError
 
 
-ANSWER = "A"
+ANSWER = "C"
 
 accounts = [
    
@@ -134,6 +134,10 @@ async def run_bot():
             except Exception as e:
                 print(f"Failed to answer: {e}")
 
+               await page.wait_for_timeout(10)
+            await context.close()
+
+           
             await context.close()
 
         await browser.close()
